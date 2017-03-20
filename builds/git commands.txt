@@ -1,0 +1,4 @@
+git clone --bare https://github.com/planetoftheweb/angulardata.git .git
+git config --bool core.bare false
+git reset --
+svn checkout 01_02b

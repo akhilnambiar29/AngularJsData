@@ -1,0 +1,4 @@
+ng-view is where your entire application will be loaded.
+
+Message will be set always right? So how come next page doesnt have it.
+if currentuser = "" , then it is not valid?

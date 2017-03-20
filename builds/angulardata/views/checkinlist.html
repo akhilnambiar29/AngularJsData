@@ -1,0 +1,63 @@
+<div class="card checkinlist">
+	<h1>Check-ins</h1>
+	<p>Here is a list of all check-ins</p>
+
+	<div class="search cf">
+		<h2>Checkins</h2>
+		<input type="text" data-ng-model="query" placeholder="Search for users" >
+	</div>
+
+	<div class="formgroup">
+		<span class="label">by:</span>
+		<select data-ng-model="order">
+			<option value="firstname">First Name</option>
+			<option value="lastname">Last Name</option>
+			<option value="date">Date</option>
+		</select>
+	</div>
+
+	<div class="formgroup">
+		<input type="radio" name="direction" id="dirascending" data-ng-model="direction">
+		<label for="dirascending">asc</label>&nbsp;
+
+		<input type="radio" name="direction" id="dirdescending" value="reverse" data-ng-model="direction">
+		<label for="dirdescending">desc</label>
+	</div>
+
+	<div data-ng-show = "currentUser" class="buttons cf">
+		<button class="btn btn-pick" data-ng-hide="recordId" data-ng-click="pickRandom()">Pick Random</button>
+		<button class="btn btn-pick" data-ng-show="recordId" data-ng-click="recordId=''">Reset</button>
+	</div>
+
+	<ul class="userlist cf">
+		<li data-ng-class="checkin.userState" data-ng-repeat="checkin in checkins |orderBy :order:direction| filter : {$id : recordId , $:query}">
+			<div class="checkin">
+			<div class="buttons" data-ng-show = "currentUser">
+				<button class="btn btn-delete tooltip" data-ng-click="deleteCheckin(checkin.$id)"><span>Delete this checkin</span></button>
+				<button class="btn btn-love tooltip" data-ng-click="showLove(checkin)"><span>Show Love</span></button>
+			</div>
+				<div class="info">
+					<h2>{{checkin.firstname}} {{checkin.lastname}}</h2>
+						<div class="date">
+							{{checkin.date | date : "MMM d,yy h:mm a"}}
+						</div>
+				</div>
+				<div class="showcheckins" data-ng-show="checkin.show">
+				<form class="cf" data-ng-submit="giveLove(checkin , checkin.giftText)" novalidate="true">
+					<input type="text" name="giftText" data-ng-required="true" placeholder="what are you giving" data-ng-model="checkin.giftText">
+					<button class="btn" data-ng-disabled="myForm.$invalid">+</button>
+				</form>
+				<ul class="awardslist cf">
+					<li class="cf" data-ng-repeat="(key,award) in checkin.awards">
+						<div class="award">
+						<button class="btn btn-delete award tooltip" data-ng-click="deleteAward(checkin,key)"><span>Delete this award</span></button>
+						{{award.name}}
+						</div>
+					</li>
+				</ul>
+				</div>
+			</div>
+			</li>
+	</ul>
+
+</div>
