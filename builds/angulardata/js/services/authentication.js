@@ -71,7 +71,6 @@ myApp.factory('Authentication',
             displayName : user.firstname,
             lastname: user.lastname,
             email: user.email ,
-            //displayName : user.firstname
           }); //userinfo
           regUser.sendEmailVerification(); //Used to send verification mail ;
          // myObject.login(user);
