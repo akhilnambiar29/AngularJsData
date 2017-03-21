@@ -38,9 +38,7 @@ myApp.factory('Authentication',
         $rootScope.message = error.message;
       }); //signInWithEmailAndPassword
     //}
-   // else {
-     // $rootScope.message =;
-   // }
+   
 
     }, //login
 
@@ -68,7 +66,7 @@ myApp.factory('Authentication',
             date: firebase.database.ServerValue.TIMESTAMP,
             regUser: regUser.uid,
             firstname: user.firstname,
-            displayName : user.firstname,
+            //displayName : user.firstname,
             lastname: user.lastname,
             email: user.email ,
           }); //userinfo
