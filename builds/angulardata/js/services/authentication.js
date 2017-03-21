@@ -7,7 +7,7 @@ myApp.factory('Authentication',
   var myObject;
 
   auth.$onAuthStateChanged(function(authUser) {
-    if(authUser && authUser.emailVerified) {
+    if(authUser) {
       //console.log("email verified");
       var userRef = ref.child('users').child(authUser.uid);
       var userObj = $firebaseObject(userRef);
@@ -52,6 +52,11 @@ myApp.factory('Authentication',
       return auth.$requireSignIn();
     }, //require Authentication
 
+    forgotPassword : function(user){
+        sendPasswordResetEmail(user.email);
+        $location.path('/login');
+    },
+
     register: function(user) {
       //$rootScope.message = '';
       auth.$createUserWithEmailAndPassword(
@@ -63,6 +68,7 @@ myApp.factory('Authentication',
             date: firebase.database.ServerValue.TIMESTAMP,
             regUser: regUser.uid,
             firstname: user.firstname,
+            displayName : user.firstname,
             lastname: user.lastname,
             email: user.email ,
             //displayName : user.firstname
