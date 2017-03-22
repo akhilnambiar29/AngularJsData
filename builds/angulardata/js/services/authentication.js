@@ -51,8 +51,16 @@ myApp.factory('Authentication',
     }, //require Authentication
 
     forgotPassword : function(user){
-        sendPasswordResetEmail(user.email);
-        $location.path('/login');
+      //console.log(user.email);
+        auth.$sendPasswordResetEmail(user.email).then(function(){
+          $location.path('/login');
+        })
+        .catch(function(error){
+            $rootScope.message = error.message;
+           // $location.path('/forgotPassword');
+        });
+         $location.path('/forgotPassword');
+       
     },
 
     register: function(user) {

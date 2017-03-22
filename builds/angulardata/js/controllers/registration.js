@@ -15,7 +15,7 @@ myApp.controller('RegistrationController',
   }; //register
 
   $scope.forgotPassword = function() {
-    Authentication.forgotPassword();
+    Authentication.forgotPassword($scope.user);
   };
 
 }]); //Controller
