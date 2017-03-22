@@ -64,7 +64,6 @@ myApp.factory('Authentication',
     },
 
     register: function(user) {
-      //$rootScope.message = '';
       auth.$createUserWithEmailAndPassword(
         user.email,
         user.password
