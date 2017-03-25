@@ -43,7 +43,7 @@ myApp.factory('Authentication',
     }, //login
 
     logout: function() {
-      $rootScope.message = "";
+      $rootScope.message = '';
       return auth.$signOut();
     }, //logout
 
