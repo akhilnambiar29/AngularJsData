@@ -1,6 +1,6 @@
 myApp.factory('Authentication',
-  ['$rootScope', '$location', '$firebaseObject', '$firebaseAuth',
-  function($rootScope, $location, $firebaseObject, $firebaseAuth) {
+  ['$rootScope', '$location', '$firebaseObject', '$firebaseAuth','$route',
+  function($rootScope, $location, $firebaseObject, $firebaseAuth , $route) {
 
   var ref = firebase.database().ref();
   var auth = $firebaseAuth();
@@ -53,6 +53,7 @@ myApp.factory('Authentication',
     forgotPassword : function(user){
       //console.log(user.email);
         auth.$sendPasswordResetEmail(user.email).then(function(){
+          $rootScope.message = "Password reset mail sent";
           $location.path('/login');
         })
         .catch(function(error){
