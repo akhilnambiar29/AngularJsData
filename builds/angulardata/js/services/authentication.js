@@ -7,7 +7,7 @@ myApp.factory('Authentication',
   var myObject;
 
   auth.$onAuthStateChanged(function(authUser) {
-    if(authUser) {
+    if(authUser && authUser.emailVerified) {
       //console.log("email verified");
       var userRef = ref.child('users').child(authUser.uid);
       var userObj = $firebaseObject(userRef);
@@ -80,6 +80,7 @@ myApp.factory('Authentication',
           }); //userinfo
           regUser.sendEmailVerification(); //Used to send verification mail ;
          // myObject.login(user);
+         $rootScope.message = "Please check your mail for verification";
          $location.path('/login');
       }).catch(function(error) {
         $rootScope.message = error.message;
