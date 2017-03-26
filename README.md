@@ -1,6 +1,6 @@
 # Building a Data-Driven App with AngularJS - with enhancements
 
-This is an enhancement of the github repository of Ray Villalobos. [Ray Villalobos's GitHub](https://github.com/planetoftheweb/angulardata)
+This is an enhancement of the github repository of Ray Villalobos , [Ray Villalobos's GitHub](https://github.com/planetoftheweb/angulardata)
 I have added some features just to enhance the experience , some just for fun and some just for learning concepts.
 
 You can find all the details on how to install and how to run the application on Ray's github repo mentioned above. 
